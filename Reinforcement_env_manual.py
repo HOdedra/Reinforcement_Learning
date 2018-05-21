@@ -76,5 +76,7 @@ def move_right():
 turtle.listen()
 turtle.onkey(move_left, "Left")
 turtle.onkey(move_right, "Right")
-    
+
+print("hi")
+
 delay = input("Press enter to finish.")
