@@ -2,6 +2,7 @@
     
 #imported libraries required for this project
 import turtle
+import time
 #import numpy as np
 
 
@@ -64,6 +65,13 @@ def move_left():
 def move_right():
     if player.xcor() == 125 and player.ycor() == 25:
         player.goto(-125,25)
+        statustring = "Status: %s" %status[1]
+        status_pen.clear()
+        status_pen.write(statustring,False, align="left",font=("Arial",14,"normal"))
+        time.sleep(1)
+        statustring = "Status: %s" %status[0]
+        status_pen.clear()
+        status_pen.write(statustring,False, align="left",font=("Arial",14,"normal"))
     else:
         x = player.xcor()
         x += playerspeed
@@ -76,5 +84,18 @@ def move_right():
 turtle.listen()
 turtle.onkey(move_left, "Left")
 turtle.onkey(move_right, "Right")
+
+""" Status of Agent """
+
+status = ["In Game","You have reached the Goal"]
+
+status_pen = turtle.Turtle()
+status_pen.speed(0)
+status_pen.color("white")
+status_pen.penup()
+status_pen.setposition(-125,100)
+statustring = "Status: %s" %status[0] 
+status_pen.write(statustring,False, align="left",font=("Arial",14,"normal"))
+status_pen.hideturtle
     
 delay = input("Press enter to finish.")
