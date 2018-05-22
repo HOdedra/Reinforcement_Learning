@@ -40,15 +40,17 @@ greg.speed(0)
 greg.setposition(-150,0)
 grid(50)
 
+player = turtle.Turtle()
+player.color("blue")
+player.shape("circle")
+player.penup()
+player.speed(0)
+player.setheading(90)
 
 def player_set(S):
-    player = turtle.Turtle()
-    player.color("blue")
-    player.shape("circle")
-    player.penup()
-    player.speed(0)
     player.setposition(S)
-    player.setheading(90)
+
+    
     
 N_STATES = 6   # the length of the 1 dimensional world
 ACTIONS = ['left', 'right']     # available actions
@@ -101,7 +103,7 @@ def update_env(S, episode, step_counter):
     
     if S == 'terminal':
         interaction = 'Episode %s: total_steps = %s' %(episode+1, step_counter)
-        print('\r{}'.format(interaction), end='')
+        print('\n{}'.format(interaction), end='')
         time.sleep(2)
         print('\r', end='')
     else:
@@ -130,6 +132,6 @@ def rl():
             S = S_
             update_env(S, episode, step_counter+1)
             step_counter += 1
-        return q_table
+    return q_table
 
 rl()
